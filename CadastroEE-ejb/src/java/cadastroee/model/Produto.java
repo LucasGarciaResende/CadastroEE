@@ -18,7 +18,6 @@ import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Collection;
 
 /**
@@ -49,7 +48,7 @@ public class Produto implements Serializable {
     private Integer quantidade;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "preco_venda")
-    private BigDecimal precoVenda;
+    private Float precoVenda;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproduto")
     private Collection<Movimento> movimentoCollection;
 
@@ -84,11 +83,11 @@ public class Produto implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getPrecoVenda() {
+    public Float getPrecoVenda() {
         return precoVenda;
     }
 
-    public void setPrecoVenda(BigDecimal precoVenda) {
+    public void setPrecoVenda(Float precoVenda) {
         this.precoVenda = precoVenda;
     }
 
@@ -125,5 +124,4 @@ public class Produto implements Serializable {
     public String toString() {
         return "cadastroee.model.Produto[ idproduto=" + idproduto + " ]";
     }
-    
 }
